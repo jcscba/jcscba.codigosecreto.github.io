@@ -2,20 +2,23 @@ var botonEncriptar = document.querySelector("#btn-encriptar");
 var botonDesencriptar = document.querySelector("#btn-desencriptar");
 var botonCopiar = document.querySelector("#btn-copy");
 
+
+		
 	botonEncriptar.addEventListener("click",function(event){
+		errorCaracteres.classList.add("invisible");
 		event.preventDefault();
 		var textoIngresado = document.querySelector("#input-texto");
 		var texto = textoIngresado.value;
-
-		/*var caracteresValidos = "abcdefghijklmnopqrstuvwxyz ":
-		if(texto.test(caracteresValidos))
-
-
-		texto = texto.toLowerCase();*/
-
-		var textoaMostrar = encriptarTexto (texto);
-		mostrarTexto(textoaMostrar);
-
+		var valido = texto.match(/[^a-z ]/);
+			
+		if(!valido){
+			var textoaMostrar = encriptarTexto (texto);
+			mostrarTexto(textoaMostrar);
+		}
+		else{
+			var error =document.querySelector("#errorCaracteres");
+			errorCaracteres.classList.remove("invisible");
+		}
 	});
 
 	botonDesencriptar.addEventListener("click",function(event){
@@ -31,7 +34,7 @@ var botonCopiar = document.querySelector("#btn-copy");
 		var copiarTexto = document.querySelector("#msg");
 		copiarTexto.focus();
 		document.execCommand("selectAll");
-	//	document.execCommand('copy');
+		document.execCommand('copy');
 
 	});
 

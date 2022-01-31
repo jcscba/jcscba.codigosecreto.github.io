@@ -58,9 +58,24 @@ body {
   height: 50px;
 }
 
-footer p{
+footer{
     
     background-color: gray;
     text-align: right;
+
    }
+
+.p {
+    margin: 5%;
+  }
+
+.invisible{
+  display:none;
+
+}
+
+#errorCaracteres{
+
+  color: red;
+}
 
